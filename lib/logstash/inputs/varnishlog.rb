@@ -19,7 +19,7 @@ class LogStash::Inputs::Varnishlog < LogStash::Inputs::Threadable
 
   def run(queue)
     @q = queue
-    @hostname = Socket.gethostname
+    @host = Socket.gethostname
     Varnish::VSL.VSL_Dispatch(@vd, self.method(:cb).to_proc, FFI::MemoryPointer.new(:pointer))
   end # def run
 
